@@ -49,6 +49,10 @@ export default async (config: Config, options: Options) => {
       const metaPath = imagePath.replace(imageOutputRegExp, '.json')
       const genDirPath = resolve(imageDirPath, config.images.slug)
       const sharpFile = sharp(imagePath)
+      const metadata = await sharpFile.metadata()
+
+      console.log(sharpFile)
+
       const sharpPromises = []
       let metaExists = true
       manifest[imageSlug] = {
@@ -57,6 +61,8 @@ export default async (config: Config, options: Options) => {
         meta: null,
         placeholder: '',
         sizes: {},
+        width: metadata.width || 0,
+        height: metadata.height || 0,
       }
 
       // load metadata if exists
