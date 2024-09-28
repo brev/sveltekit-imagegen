@@ -8,6 +8,8 @@ export type ImageSet = {
   sizes: {
     [key: string]: Record<string, string>
   }
+  width: number
+  height: number
 }
 
 export type ImageSets = Record<string, ImageSet>
