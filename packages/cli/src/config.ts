@@ -87,7 +87,7 @@ export const getConfig = async (options: Options) => {
           ].join(' ')
         )
       }
-    } else if (ext === '.js') {
+    } else if (ext === '.js' || ext === '.cjs') {
       // js
       try {
         const { default: configJs } = await import(resolve(cwd(), configFile))
